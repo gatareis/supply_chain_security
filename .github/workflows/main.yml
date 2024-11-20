@@ -7,6 +7,8 @@ on:
   pull_request:
     branches:
       - master
+  # Allow manual triggering
+  workflow_dispatch:
   
 jobs:
   generate-sbom:
@@ -23,8 +25,6 @@ jobs:
     - name: Generate SBOM
       run: |
         syft docker.io/kodekloud/webapp-color:latest -o spdx-json > spdx.json
-
-  workflow_dispatch:
 
     - name: Upload SBOM Artifact
       uses: actions/upload-artifact@v3
