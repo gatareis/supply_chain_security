@@ -24,21 +24,6 @@ jobs:
       run: |
         syft docker.io/kodekloud/webapp-color:latest -o spdx-json > spdx.json
 
-  upload-sbom:
-    runs-on: ubuntu-latest
-
-  workflow_dispatch:
-    inputs:
-      username:
-        description: 'select user'
-        default: ''
-        required: true
-        type: string
-    
-    steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v3
-
     - name: Upload SBOM Artifact
       uses: actions/upload-artifact@v3
       with:
